@@ -1,0 +1,239 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* Falling back to Courier New if web font fails to load */
+    font-family: 'Press Start 2P', 'Courier New', Courier, monospace;
+    background-color: white;
+    /* Maintain white background throughout the start */
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Start Screen */
+#start-btn {
+    padding: 20px 40px;
+    font-size: 1.2rem;
+    font-family: inherit;
+    background-color: #ff4757;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s, background-color 0.2s;
+    text-align: center;
+    max-width: 90%;
+}
+
+#start-btn:hover {
+    transform: scale(1.05);
+    background-color: #ff6b81;
+}
+
+#start-btn:active {
+    transform: scale(0.95);
+}
+
+/* Countdown Screen */
+#timer {
+    font-size: 4rem;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+#carousel {
+    width: 300px;
+    height: 300px;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    background-color: #f0f0f0;
+    /* Default background if image is transparent */
+}
+
+#carousel-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+#greeting-container {
+    text-align: center;
+    min-height: 80px;
+    padding: 0 20px;
+    max-width: 90%;
+}
+
+#greeting-text {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    transition: color 0.5s ease;
+    /* Soft text-shadow to make brighter colors like yellow pop on white backgrounds */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Creeper Screen */
+#creeper-screen {
+    z-index: 50;
+    /* Ensure high z-index to cover carousel and other elements */
+}
+
+#creeper-video {
+    display: none;
+}
+
+/* 
+ * CSS Fallback alternative for Chroma-key if Canvas continues to look messy.
+ * This can be applied to #creeper-video directly to use a CSS-only attempt:
+ */
+.creeper-video-fallback {
+    display: block !important;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    z-index: 50;
+
+    /* Using mix-blend-mode to blend the screen while fading in */
+    mix-blend-mode: screen;
+    /* Or you can use CSS masking / opacity transition as a backup */
+    /* transition: opacity 1s ease-in; */
+}
+
+#creeper-canvas {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* Keeps aspect ratio correct scaling up to window size */
+}
+
+/* Flash Screen */
+#flash-screen {
+    background-color: white;
+    z-index: 1000;
+}
+
+.flash-anim {
+    animation: flash 1s forwards;
+}
+
+@keyframes flash {
+    0% {
+        opacity: 0;
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Reveal Screen */
+#reveal-screen {
+    z-index: 100;
+}
+
+.reveal-text {
+    font-size: 3.5rem;
+    text-align: center;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+.reveal-name {
+    font-size: 4.5rem;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    font-family: inherit;
+}
+
+/* Responsive constraints for Mobile Devices */
+@media (max-width: 768px) {
+    #start-btn {
+        font-size: 1rem;
+        padding: 15px 20px;
+    }
+
+    #timer {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+    }
+
+    #carousel {
+        width: 250px;
+        height: 250px;
+        margin-bottom: 25px;
+    }
+
+    #greeting-text {
+        font-size: 1.1rem;
+    }
+
+    .reveal-text {
+        font-size: 2rem;
+    }
+
+    .reveal-name {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #carousel {
+        width: 200px;
+        height: 200px;
+    }
+
+    .reveal-text {
+        font-size: 1.5rem;
+    }
+
+    .reveal-name {
+        font-size: 2rem;
+    }
+}

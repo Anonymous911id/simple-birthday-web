@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Abdulloh!</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts for playful/gaming font -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Start Screen -->
+    <div id="start-screen" class="screen">
+        <button id="start-btn">Open your gift, Abdulloh!</button>
+    </div>
+
+    <!-- Countdown Screen -->
+    <div id="countdown-screen" class="screen hidden">
+        <div id="timer">20</div>
+
+        <div id="carousel">
+            <img id="carousel-img" src="pic/pic1.png" alt="Birthday Pic">
+        </div>
+
+        <div id="greeting-container">
+            <h1 id="greeting-text"></h1>
+        </div>
+    </div>
+
+    <!-- Creeper Event Screen -->
+    <div id="creeper-screen" class="screen hidden">
+        <!-- Make sure to use muted inline playback on mobile if needed, though this is triggered by click so it should play fine -->
+        <video id="creeper-video" src="media/creeper.mp4" playsinline webkit-playsinline></video>
+        <canvas id="creeper-canvas"></canvas>
+    </div>
+
+    <!-- Flash Animation Screen -->
+    <div id="flash-screen" class="screen hidden"></div>
+
+    <!-- Grand Reveal Screen -->
+    <div id="reveal-screen" class="screen hidden">
+        <div class="reveal-text">
+            <span style="color: blue;">HAPPY</span> <span style="color: purple;">BIRTHDAY</span>
+        </div>
+        <div class="reveal-name">Abdulloh</div>
+    </div>
+
+    <!-- Background Music -->
+    <audio id="bg-music" src="media/background.mp3" loop></audio>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
