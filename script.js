@@ -148,11 +148,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }, 1000);
 
-        // Image Carousel Logic (every 3 seconds)
-        // Cycles pic1.png -> pic4.png
+        // Image Carousel Logic (every ~3.33 seconds for 6 images in 20s)
+        // Cycles pic1.png -> pic6.png
         carouselInterval = setInterval(() => {
             currentPicIndex++;
-            if (currentPicIndex > 4) currentPicIndex = 1;
+            if (currentPicIndex > 6) currentPicIndex = 1;
 
             // Re-trigger CSS animation
             carouselImg.style.animation = 'none';
@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
             carouselImg.style.animation = null;
 
             carouselImg.src = `pic/pic${currentPicIndex}.png`;
-        }, 3000);
+        }, 3333);
 
         // Greetings Text Logic (every 5 seconds)
         greetingInterval = setInterval(() => {
